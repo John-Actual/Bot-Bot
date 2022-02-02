@@ -1,0 +1,14 @@
+{
+  "name": "bot-bot",
+  "version": "1.0.0",
+  "description": "a very epic discord bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "John Actual",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.6.0"
+  }
+}
