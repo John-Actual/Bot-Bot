@@ -1,11 +1,11 @@
-const client = require('../index')
+
 module.exports = {
     name: 'interactionCreate',
     execute(interaction) {
 		async function InteractionCreate() {
 			if (!interaction.isCommand()) return;
 
-			const command = client.commands.get(interaction.commandName);
+			const command = interaction.client.commands.get(interaction.commandName);
 
 			if (!command) return;
 
