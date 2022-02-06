@@ -42,10 +42,5 @@ player.on('trackStart', (queue, track) => {
     queue.metadata.send(`🎵 Music started playing: **${track.title}** -> Channel: **${queue.connection.channel.name}** 🎧`);
 });
 
-player.on('trackAdd', (queue, track) => {
-    queue.metadata.send(`**${track.title}** added to playlist. ✅`);
-});
-
-
 // Login to Discord with your client's token
 client.login(token);
