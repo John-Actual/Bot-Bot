@@ -6,7 +6,7 @@ const { Player } = require("discord-player");
 
 
 // Create a new client instance
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_VOICE_STATES] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_SCHEDULED_EVENTS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
 
 client.config = require('./audioConfig.js');
 client.player = new Player(client, client.config.opt.discordPlayer);

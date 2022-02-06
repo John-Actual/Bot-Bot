@@ -32,9 +32,11 @@ module.exports = {
         return interaction.reply({content: 'I am unable to join the audio channel', ephemeral: true});
       };
 
-      await interaction.reply(`Your ${res.playlist ? 'Playlist': 'Track'} Loading...`);
+      await interaction.reply({content: `Your ${res.playlist ? 'Playlist': 'Track'} is Loading...`, ephemeral: true});
 
       res.playlist ? queue.addTracks(res.tracks) : queue.addTrack(res.tracks[0]);
+
+      interaction.editReply({content: `added **${res.playlist ? res.playlist.title : res.tracks[0].title}** to queue`, ephemeral: true});
 
       if (!queue.playing) await queue.play();
     },
