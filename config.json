@@ -1,4 +1,5 @@
 {
-    "token": "OTM5MzE3MDk2OTQzMzQxNTk4.Yf3FNw.DNPcB5fZCVegPTMaCQxqnk97XMI",
-    "clientID": "939317096943341598"
+    "token": "OTM5MzE3MDk2OTQzMzQxNTk4.Yf3FNw.OVGOU6sw2AcvvjrYYTIcomYHPEY",
+    "clientID": "939317096943341598",
+    "database": "mongodb+srv://JohnActual:Ia4kbkvXtoOXDq0Y@bot-bot.oogsm.mongodb.net/Bot-Bot?retryWrites=true&w=majority"
 }

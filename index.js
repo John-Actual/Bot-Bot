@@ -42,5 +42,16 @@ player.on('trackStart', (queue, track) => {
     queue.metadata.send(`🎵 Music started playing: **${track.title}** -> Channel: **${queue.connection.channel.name}** 🎧`);
 });
 
+player.on('error', (queue, error) => {
+    queue.metadata.send(`There was a problem with the song queue :/`);
+	console.log(error.message);
+});
+
+player.on('connectionError', (queue, error) => {
+	queue.metadata.send('I\'m having trouble connecting :/')
+    console.log(`${error.message}`);
+});
+
+
 // Login to Discord with your client's token
 client.login(token);

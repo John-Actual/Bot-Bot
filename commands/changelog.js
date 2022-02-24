@@ -4,14 +4,10 @@ const { MessageEmbed } = require('discord.js');
 const changelogEmbed = new MessageEmbed()
     .setColor('#7b1fc2')
     .setTitle('Bot Bot Changelog')
-    .setDescription('version 1.0.0')
+    .setDescription('version 1.1.1')
     .addFields(
-		{ name: 'New clean look', value: 'Revamped with some future plans prepared' },
-		{ name: 'More to come', value: 'Not every command is in yet, use /help to see every implemented command' },
-        {name: 'Music commands', value: 'another music update, should be working good now.'},
-        { name: 'Return of lmao moment??!!??', value: 'soon.' },
-        { name: 'Probability of you reading this: 1', value: 'Ratio + cope + mald you can\'t un read it lmO' },
-        {name: 'Want to suggest a feature', value: 'Send a message to John Actual#3198'}
+		{ name: '/suggest' , value: 'Suggest a feature' },
+        { name: 'Updated Commands' , value: 'I recommend you use /help tbh' },
     )
     .setTimestamp();
 
@@ -20,10 +16,14 @@ module.exports = {
             .setName('changelog')
             .setDescription('Provides changelog info about Bot Bot'),
     async execute(interaction) {
+        const channel = interaction.client.channels.cache.get('808443135881248838')
         if (interaction.member.id === '558086170983268353') {
-            interaction.reply({embeds: [changelogEmbed]});
+            channel.send({embeds: [changelogEmbed]})
+            interaction.reply({embeds: [changelogEmbed], ephemeral: true})
         }else {
             interaction.reply({embeds: [changelogEmbed], ephemeral: true})
         }
     }
 }
+
+//{ name: '' , value: '' },

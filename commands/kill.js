@@ -12,6 +12,8 @@ module.exports = {
         }
         const user = interaction.options.getUser('user');
 
+        const invincibleList = ['939317096943341598', '558086170983268353', '790601419333959692']
+
         if (!user) {
             if (interaction.member.id !== '558086170983268353') {
                 interaction.reply({ content: 'Uh oh, I forgor to kill someone', ephemeral: true })
@@ -24,7 +26,11 @@ module.exports = {
                 })
             }
         }else if (user) {
+            if (user.id === interaction.member.id) return interaction.reply('Suicide is bad :(')
+            if (invincibleList.includes(user.id)) return interaction.reply('I cannot kill someone who is invulnerable')
             await interaction.reply(`<@!${interaction.member.id}> just killed <@!${user.id}>`)
+            
+
         }
     }
 }
