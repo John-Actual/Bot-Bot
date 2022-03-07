@@ -39,7 +39,7 @@ for (const file of eventFiles) {
 //audio player events - they just don't fit in the event handler :|
 player.on('trackStart', (queue, track) => {
     if (!client.config.opt.loopMessage && queue.repeatMode !== 0) return;
-    queue.metadata.send(`🎵 Music started playing: **${track.title}** -> Channel: **${queue.connection.channel.name}** 🎧`);
+    queue.metadata.send(`🎵 Music started playing: **${track.title}** -> Channel: **${queue.connection.channel.name}** --> Requested by: **<@${track.requestedBy.id}>**`);
 });
 
 player.on('error', (queue, error) => {
@@ -50,6 +50,10 @@ player.on('error', (queue, error) => {
 player.on('connectionError', (queue, error) => {
 	queue.metadata.send('I\'m having trouble connecting :/')
     console.log(`${error.message}`);
+});
+
+player.on('channelEmpty', (queue) => {
+    queue.destroy();
 });
 
 

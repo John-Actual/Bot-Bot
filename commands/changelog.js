@@ -1,13 +1,17 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
+var randomColor = function () {
+    return `#${Math.floor(Math.random()*16777215).toString(16)}`
+}
 
-const changelogEmbed = new MessageEmbed()
-    .setColor('#7b1fc2')
+var changelogEmbed = new MessageEmbed()
+    .setColor(randomColor())
     .setTitle('Bot Bot Changelog')
-    .setDescription('version 1.1.1')
+    .setDescription('version 1.1.2')
     .addFields(
-		{ name: '/suggest' , value: 'Suggest a feature' },
-        { name: 'Updated Commands' , value: 'I recommend you use /help tbh' },
+		{ name: 'Bug Fix' , value: 'Fixed feature where if no one is in vc Bot Bot continues to play music' },
+        { name: 'Added ghost ping detection' , value: 'If message that mentions @everyone or @here is deleted, they are called out lmao' },
+        { name: 'Hello Tyler' , value: 'You will read this (probably)' }
     )
     .setTimestamp();
 
