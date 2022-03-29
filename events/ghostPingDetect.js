@@ -12,8 +12,11 @@ module.exports = {
 					.setLabel('Info')
 					.setStyle('SUCCESS'),
 			);
+            var secondsSince = Math.round(((Date.now() - message.createdAt) / 1000) - 20);
 
-            message.channel.send({content: `<@${message.author.id}> has some information for you:`, components: [row]})
+            if (secondsSince < 16) {
+                message.channel.send({content: `<@${message.author.id}> has some information for you:`, components: [row]})
+            };
         }
     
     }
