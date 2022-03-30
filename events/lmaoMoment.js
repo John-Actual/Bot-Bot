@@ -1,5 +1,5 @@
 const database = require('../database.js')
-const l = new database.Database(database.lmaoModel)
+const l = database.lmaoModel
 module.exports = {
     name: "messageCreate",
     async execute(message) {
@@ -46,16 +46,19 @@ module.exports = {
         var i = Math.round(Math.random() * gifs_reactions.length);
 
         if(message.content.toLowerCase().includes('lmao moment')) {
-            l.find(message.guild.id, function (data) {
+            l.find({key: message.guild.id}, async function (err, data) {
                 if (!data.length) {
-                    l.save(message.guild.id, false)
-                    message.reply('Use /toggle to toggle the funny')
-                }
-                else if (data[0].value == false) {
-                    message.reply('Use /toggle to toggle the funny')
-                }
-                else if (data[0].value == true) {
-                    message.channel.send(gifs_reactions[i]);
+                    const doc = new l({
+                        key: message.guild.id,
+                        value: false
+                    });
+
+                    await doc.save()
+                    message.author.send('to activate the funny, use /toggle')
+                }else if (data[0].value == false) {
+                    message.author.send('to activate the funny, use /toggle')
+                }else if (data[0].value == true) {
+                    message.channel.send(gifs_reactions[i])
                 }
             })
         }
