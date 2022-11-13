@@ -1,10 +1,10 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 var randomColor = function () {
     return `#${Math.floor(Math.random()*16777215).toString(16)}`
 }
 
-var changelogEmbed = new MessageEmbed()
+var changelogEmbed = new EmbedBuilder()
     .setColor(randomColor())
     .setTitle('Bot Bot Changelog')
     .setDescription('version 1.1.2')

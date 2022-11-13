@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed, Message } = require("discord.js");
+const { EmbedBuilder, Message } = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -16,7 +16,7 @@ module.exports = {
         const songs = queue.tracks.length;
         const nextSongs = songs > 5 ? `And **${songs - 5}** Other Song...` : `There are **${songs}** Songs in the List.`;
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
         .setColor('RED')
         .setThumbnail(interaction.guild.iconURL({ size: 2048, dynamic: true }))
         .setTitle('Server Music List 😎')

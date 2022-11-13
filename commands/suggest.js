@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
+const { EmbedBuilder, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -9,7 +9,7 @@ module.exports = {
     async execute(interaction) {
         const suggestion = interaction.options.getString('suggestion');
         const channel = interaction.client.channels.cache.get('944667288848723988')
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setColor(interaction.member.displayHexColor)
             .setTitle(`${interaction.member.user.username}'s Suggestion`)
             .setThumbnail(interaction.member.user.displayAvatarURL())
