@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { Client } = require("craiyon");
 const { AttachmentBuilder } = require('discord.js');
+const sharp = require('sharp');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -15,8 +16,11 @@ module.exports = {
         const result = await crayion.generate({
             prompt: prompt,
         });
-        let buffer = result.images[0].asBuffer();
-        let attachment = new AttachmentBuilder(buffer, {name: `${prompt}.png`});
+        let rawResult = result.images[1].asBuffer();
+        let processedResult = await sharp(rawResult)
+        .sharpen({sigma: 20})
+        .toBuffer();
+        let attachment = new AttachmentBuilder(processedResult, {name: `${prompt}.png`});
     
         interaction.editReply({
             content: `Generated images based on this prompt: **${prompt}** -> <@!${interaction.member.id}>`,

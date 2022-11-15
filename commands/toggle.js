@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { Permissions } = require('discord.js');
+const { PermissionFlagsBits } = require('discord.js');
 const database = require("../database");
 const l = database.lmaoModel
 
@@ -11,7 +11,7 @@ module.exports = {
     async execute(interaction) {
         const boolean = interaction.options.getBoolean('boolean')
 
-        if (interaction.member.permissions.has(Permissions.FLAGS.MANAGE_GUILD)) {
+        if (interaction.member.permissions.has(PermissionFlagsBits.MANAGE_GUILD)) {
             
             l.find({key: interaction.guild.id}, async function(err, data) {
 

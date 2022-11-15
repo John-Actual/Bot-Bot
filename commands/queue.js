@@ -17,7 +17,7 @@ module.exports = {
         const nextSongs = songs > 5 ? `And **${songs - 5}** Other Song...` : `There are **${songs}** Songs in the List.`;
 
         const embed = new EmbedBuilder()
-        .setColor('RED')
+        .setColor('#ff0000')
         .setThumbnail(interaction.guild.iconURL({ size: 2048, dynamic: true }))
         .setTitle('Server Music List 😎')
         .setDescription(`Currently Playing: \`${queue.current.title}\`\n\n${tracks.slice(0, 5).join('\n')}\n\n${nextSongs }`)

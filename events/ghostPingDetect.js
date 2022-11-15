@@ -1,16 +1,16 @@
-const { MessageActionRow, MessageButton } = require("discord.js");
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 
 module.exports = {
     name: 'messageDelete',
     execute(message) {
 		
         if (message.content.includes('@everyone') || message.content.includes('@here')) {
-            const row = new MessageActionRow()
+            const row = new ActionRowBuilder()
 			.addComponents(
-				new MessageButton()
+				new ButtonBuilder()
 					.setCustomId('ghostPing')
 					.setLabel('Info')
-					.setStyle('SUCCESS'),
+					.setStyle(ButtonStyle.Success),
 			);
             var secondsSince = Math.round(((Date.now() - message.createdAt) / 1000) - 20);
 
