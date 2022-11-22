@@ -7,7 +7,7 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName('imagine')
     .setDescription('generate images based on a prompt')
-    .addStringOption(option => option.setName('prompt').setDescription('anything that can be imagined can become real').setRequired(true)),
+    .addStringOption(option => option.setName('prompt').setDescription('infinite possibillities...').setRequired(true)),
     async execute(interaction) {
         const crayion = new Client;
         const prompt = interaction.options.getString('prompt');
@@ -23,7 +23,7 @@ module.exports = {
         let attachment = new AttachmentBuilder(processedResult, {name: `${prompt}.png`});
     
         interaction.editReply({
-            content: `Generated images based on this prompt: **${prompt}** -> <@!${interaction.member.id}>`,
+            content: `Generated an image based on this prompt: **${prompt}** -> <@!${interaction.member.id}>`,
             files: [attachment]
         })
         
